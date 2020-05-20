@@ -48,38 +48,68 @@ fun quadraticRootProduct(a: Double, b: Double, c: Double): Double {
 /**
  * Пример главной функции
  */
-fun main() {
-    val x1x2 = quadraticRootProduct(1.0, 13.0, 42.0)
-    println("Root product: $x1x2")
+fun main(args: Array<String>) {
+    //    val x1x2 = quadraticRootProduct(1.0, 13.0, 42.0)
+    //    println("Root product: $x1x2")
+    //    val result = sqr(7)
+    //    println("7 * 7 = $result")
+    //    val result = angleInRadian(36, 14, 35)
+    //  println("36 deg 14 min 35 sec = ${angleInRadian(36, 14, 35)} radian")
+//    val result = thirdDigit(3801)
+//    println(result)
+//    val result = seconds(8,20,35)
+//    println(result)
+//    val result = lengthInMeters(8, 2, 11)
+//    println(result)
+//    val result = travelMinutes(9, 25, 13, 1)
+//    println(result)
+    val result: Any = numberRevert(478)
+    println(result)
 }
 
 /**
- * Тривиальная
+ * 1. Тривиальная
  *
  * Пользователь задает время в часах, минутах и секундах, например, 8:20:35.
  * Рассчитать время в секундах, прошедшее с начала суток (30035 в данном случае).
  */
-fun seconds(hours: Int, minutes: Int, seconds: Int): Int = TODO()
+fun seconds(hours: Int, minutes: Int, seconds: Int): Int {
+    val hoursSec = hours * 60 * 60
+    val minSec = minutes * 60
+    val secSec = seconds
+    return (hoursSec + minSec + secSec)
+}
 
 /**
- * Тривиальная
+ * 2. Тривиальная
  *
  * Пользователь задает длину отрезка в саженях, аршинах и вершках (например, 8 саженей 2 аршина 11 вершков).
  * Определить длину того же отрезка в метрах (в данном случае 18.98).
  * 1 сажень = 3 аршина = 48 вершков, 1 вершок = 4.445 см.
  */
-fun lengthInMeters(sagenes: Int, arshins: Int, vershoks: Int): Double = TODO()
+fun lengthInMeters(sagenes: Int, arshins: Int, vershoks: Int): Double {
+    val sagenesL = sagenes * (4.445 * 16 * 3)
+    val arshinsL = arshins * (4.445 * 16)
+    val vershoksL = vershoks * 4.445
+    return ((sagenesL + arshinsL + vershoksL) / 100)
+}
 
 /**
- * Тривиальная
+ * 3. Тривиальная
  *
  * Пользователь задает угол в градусах, минутах и секундах (например, 36 градусов 14 минут 35 секунд).
  * Вывести значение того же угла в радианах (например, 0.63256).
  */
-fun angleInRadian(deg: Int, min: Int, sec: Int): Double = TODO()
+//fun angleInRadian(deg: Int, min: Int, sec: Int): Unit {
+fun angleInRadian(deg: Int, min: Int, sec: Int): Double {
+    val degR: Double = deg * (PI / 180)
+    val minR: Double = min * (PI / (180 * 60))
+    val secR: Double = sec * (PI / (180 * 60 * 60))
+    return degR + minR + secR
+}
 
 /**
- * Тривиальная
+ * 4. Тривиальная
  *
  * Найти длину отрезка, соединяющего точки на плоскости с координатами (x1, y1) и (x2, y2).
  * Например, расстояние между (3, 0) и (0, 4) равно 5
@@ -87,24 +117,33 @@ fun angleInRadian(deg: Int, min: Int, sec: Int): Double = TODO()
 fun trackLength(x1: Double, y1: Double, x2: Double, y2: Double): Double = TODO()
 
 /**
- * Простая
+ * 5. Простая
  *
  * Пользователь задает целое число, большее 100 (например, 3801).
  * Определить третью цифру справа в этом числе (в данном случае 8).
  */
-fun thirdDigit(number: Int): Int = TODO()
+fun thirdDigit(number: Int): Int {
+    val secondD = number % 1000 / 100
+    return (secondD)
+}
 
 /**
- * Простая
+ * 6. Простая
  *
  * Поезд вышел со станции отправления в h1 часов m1 минут (например в 9:25) и
  * прибыл на станцию назначения в h2 часов m2 минут того же дня (например в 13:01).
  * Определите время поезда в пути в минутах (в данном случае 216).
  */
-fun travelMinutes(hoursDepart: Int, minutesDepart: Int, hoursArrive: Int, minutesArrive: Int): Int = TODO()
+fun travelMinutes(hoursDepart: Int, minutesDepart: Int, hoursArrive: Int, minutesArrive: Int): Int {
+    val dh = hoursDepart * 60
+    val dm = minutesDepart
+    val ah = hoursArrive * 60
+    val am = minutesArrive
+    return ((ah + am) - (dh + dm))
+}
 
 /**
- * Простая
+ * 7. Простая
  *
  * Человек положил в банк сумму в s рублей под p% годовых (проценты начисляются в конце года).
  * Сколько денег будет на счету через 3 года (с учётом сложных процентов)?
@@ -113,9 +152,10 @@ fun travelMinutes(hoursDepart: Int, minutesDepart: Int, hoursArrive: Int, minute
 fun accountInThreeYears(initial: Int, percent: Int): Double = TODO()
 
 /**
- * Простая
+ * 8. Простая
  *
  * Пользователь задает целое трехзначное число (например, 478).
  * Необходимо вывести число, полученное из заданного перестановкой цифр в обратном порядке (например, 874).
  */
 fun numberRevert(number: Int): Int = TODO()
+
